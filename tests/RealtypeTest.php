@@ -18,7 +18,7 @@ class RealtypeTest extends PHPUnit_Framework_TestCase
 {
     public function testWithNotString()
     {
-        $this->assertSame(['test'], Realtype::get(['test']));
+        $this->assertSame(2.2, Realtype::get(2.2));
     }
 
     public function testWithZero()
