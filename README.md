@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/tebru/realtype.svg?branch=master)](https://travis-ci.org/tebru/realtype)
+[![Coverage Status](https://coveralls.io/repos/github/tebru/realtype/badge.svg?branch=master)](https://coveralls.io/github/tebru/realtype?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/tebru/realtype/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/tebru/realtype/?branch=master)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/9fd39ca0-d83e-47f9-8c06-96656ab1461c/mini.png)](https://insight.sensiolabs.com/projects/9fd39ca0-d83e-47f9-8c06-96656ab1461c)
+
 # Realtype
 
 A PHP library that gets the real type from a string.  Sometimes doubles, integers, or booleans will exist inside a string.
