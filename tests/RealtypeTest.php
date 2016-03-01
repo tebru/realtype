@@ -62,4 +62,10 @@ class RealtypeTest extends PHPUnit_Framework_TestCase
         $this->assertTrue('string' === gettype(Realtype::get('0xDEADBEEF')));
         $this->assertSame('0xDEADBEEF', Realtype::get('0xDEADBEEF'));
     }
+
+    public function testStringStartingWithInt()
+    {
+        $this->assertTrue('string' === gettype(Realtype::get('101 Dalmations')));
+        $this->assertSame('101 Dalmations', Realtype::get('101 Dalmations'));
+    }
 }

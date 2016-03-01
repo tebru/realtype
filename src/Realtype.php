@@ -59,26 +59,7 @@ class Realtype
      */
     private static function isDouble($var)
     {
-        $potentialDouble = floatval($var);
-
-        // if floatval() is 0, it's not a double
-        if (0.0 === $potentialDouble) {
-            return false;
-        }
-
-        // if the intval() of the double is the same, it's an int
-        // do a weak check because we don't want to check the type as well
-        if (intval($potentialDouble) == $potentialDouble) {
-
-            // if there's a decimal in the string, it's still a double
-            if (strpos($var, '.')) {
-                return true;
-            }
-
-            return false;
-        }
-
-        return true;
+        return (bool)preg_match('/^\d*\.\d*$/', $var);
     }
 
     /**
@@ -91,14 +72,7 @@ class Realtype
      */
     private static function isInt($var)
     {
-        $potentialInt = intval($var);
-
-        // if intval() is 0, it's not an int
-        if (0 === $potentialInt) {
-            return false;
-        }
-
-        return true;
+        return (bool)preg_match('/^\d+$/', $var);
     }
 
     /**
