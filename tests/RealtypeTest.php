@@ -39,6 +39,18 @@ class RealtypeTest extends PHPUnit_Framework_TestCase
         $this->assertSame(2.0, Realtype::get('2.0'));
     }
 
+    public function testIsDoubleNoPrecedingDigit()
+    {
+        $this->assertTrue('double' === gettype(Realtype::get('.2')));
+        $this->assertSame(0.2, Realtype::get('.2'));
+    }
+
+    public function testIsDoubleNoFollowingDigit()
+    {
+        $this->assertTrue('double' === gettype(Realtype::get('2.')));
+        $this->assertSame(2.0, Realtype::get('2.'));
+    }
+
     public function testIsInt()
     {
         $this->assertTrue('integer' === gettype(Realtype::get('2')));
