@@ -69,6 +69,12 @@ class RealtypeTest extends PHPUnit_Framework_TestCase
         $this->assertFalse(Realtype::get('false'));
     }
 
+    public function testIsNullTrue()
+    {
+        $this->assertTrue('NULL' === gettype(Realtype::get('null')));
+        $this->assertNull(Realtype::get('null'));
+    }
+
     public function testIsString()
     {
         $this->assertTrue('string' === gettype(Realtype::get('0xDEADBEEF')));

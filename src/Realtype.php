@@ -43,6 +43,10 @@ class Realtype
             return ('true' === $var) ? true : false;
         }
 
+        if (self::isNull($var)) {
+            return null;
+        }
+
         // if we've gotten this far, it's a string
         return $var;
     }
@@ -88,5 +92,16 @@ class Realtype
         }
 
         return false;
+    }
+
+    /**
+     * Check if var is null
+     *
+     * @param string $var
+     * @return bool
+     */
+    private static function isNull($var)
+    {
+        return 'null' === $var;
     }
 }
