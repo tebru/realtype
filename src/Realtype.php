@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2015 Nate Brunette.
+ * Copyright (c) Nate Brunette.
  * Distributed under the MIT License (http://opensource.org/licenses/MIT)
  */
 
@@ -32,15 +32,15 @@ class Realtype
         }
 
         if (self::isDouble($var)) {
-            return floatval($var);
+            return (float) $var;
         }
 
         if (self::isInt($var)) {
-            return intval($var);
+            return (int) $var;
         }
 
         if (self::isBool($var)) {
-            return ('true' === $var) ? true : false;
+            return 'true' === $var;
         }
 
         if (self::isNull($var)) {
@@ -63,7 +63,7 @@ class Realtype
      */
     private static function isDouble($var)
     {
-        return (bool)preg_match('/^\d*\.\d*$/', $var);
+        return (bool) preg_match('/^\d*\.\d*$/', $var);
     }
 
     /**
@@ -76,7 +76,7 @@ class Realtype
      */
     private static function isInt($var)
     {
-        return (bool)preg_match('/^\d+$/', $var);
+        return (bool) preg_match('/^\d+$/', $var);
     }
 
     /**
@@ -87,11 +87,7 @@ class Realtype
      */
     private static function isBool($var)
     {
-        if ('true' === $var || 'false' === $var) {
-            return true;
-        }
-
-        return false;
+        return 'true' === $var || 'false' === $var;
     }
 
     /**

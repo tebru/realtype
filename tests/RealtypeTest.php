@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2015 Nate Brunette.
+ * Copyright (c) Nate Brunette.
  * Distributed under the MIT License (http://opensource.org/licenses/MIT)
  */
 
@@ -18,72 +18,72 @@ class RealtypeTest extends PHPUnit_Framework_TestCase
 {
     public function testWithNotString()
     {
-        $this->assertSame(2.2, Realtype::get(2.2));
+        self::assertSame(2.2, Realtype::get(2.2));
     }
 
     public function testWithZero()
     {
-        $this->assertTrue('integer' === gettype(Realtype::get('0')));
-        $this->assertSame(0, Realtype::get('0'));
+        self::assertSame('integer', gettype(Realtype::get('0')));
+        self::assertSame(0, Realtype::get('0'));
     }
 
     public function testIsDouble()
     {
-        $this->assertTrue('double' === gettype(Realtype::get('2.2')));
-        $this->assertSame(2.2, Realtype::get('2.2'));
+        self::assertSame('double', gettype(Realtype::get('2.2')));
+        self::assertSame(2.2, Realtype::get('2.2'));
     }
 
     public function testIsDoubleZeroDecimal()
     {
-        $this->assertTrue('double' === gettype(Realtype::get('2.0')));
-        $this->assertSame(2.0, Realtype::get('2.0'));
+        self::assertSame('double', gettype(Realtype::get('2.0')));
+        self::assertSame(2.0, Realtype::get('2.0'));
     }
 
     public function testIsDoubleNoPrecedingDigit()
     {
-        $this->assertTrue('double' === gettype(Realtype::get('.2')));
-        $this->assertSame(0.2, Realtype::get('.2'));
+        self::assertSame('double', gettype(Realtype::get('.2')));
+        self::assertSame(0.2, Realtype::get('.2'));
     }
 
     public function testIsDoubleNoFollowingDigit()
     {
-        $this->assertTrue('double' === gettype(Realtype::get('2.')));
-        $this->assertSame(2.0, Realtype::get('2.'));
+        self::assertSame('double', gettype(Realtype::get('2.')));
+        self::assertSame(2.0, Realtype::get('2.'));
     }
 
     public function testIsInt()
     {
-        $this->assertTrue('integer' === gettype(Realtype::get('2')));
-        $this->assertSame(2, Realtype::get('2'));
+        self::assertSame('integer', gettype(Realtype::get('2')));
+        self::assertSame(2, Realtype::get('2'));
     }
 
     public function testIsBoolTrue()
     {
-        $this->assertTrue('boolean' === gettype(Realtype::get(true)));
-        $this->assertTrue(Realtype::get(true));
+        self::assertSame('boolean', gettype(Realtype::get(true)));
+        self::assertTrue(Realtype::get(true));
     }
 
     public function testIsBoolFalse()
     {
-        $this->assertTrue('boolean' === gettype(Realtype::get('false')));
-        $this->assertFalse(Realtype::get('false'));
+        self::assertSame('boolean', gettype(Realtype::get('false')));
+        self::assertFalse(Realtype::get('false'));
     }
 
     public function testIsNullTrue()
     {
-        $this->assertTrue('NULL' === gettype(Realtype::get('null')));
-        $this->assertNull(Realtype::get('null'));
+        self::assertSame('NULL', gettype(Realtype::get('null')));
+        self::assertNull(Realtype::get('null'));
     }
 
     public function testIsString()
     {
-        $this->assertTrue('string' === gettype(Realtype::get('0xDEADBEEF')));
-        $this->assertSame('0xDEADBEEF', Realtype::get('0xDEADBEEF'));
+        self::assertSame('string', gettype(Realtype::get('0xDEADBEEF')));
+        self::assertSame('0xDEADBEEF', Realtype::get('0xDEADBEEF'));
     }
 
     public function testStringStartingWithInt()
     {
-        $this->assertTrue('string' === gettype(Realtype::get('101 Dalmations')));
-        $this->assertSame('101 Dalmations', Realtype::get('101 Dalmations'));
+        self::assertSame('string', gettype(Realtype::get('101 Dalmations')));
+        self::assertSame('101 Dalmations', Realtype::get('101 Dalmations'));
     }
 }
