@@ -31,13 +31,17 @@ class Realtype
             return 0;
         }
 
+        if (self::isInt($var)) {
+            // cast to float first in case we're using scientific notation
+            $var = (float) $var;
+
+            return (int) $var;
+        }
+
         if (self::isDouble($var)) {
             return (float) $var;
         }
 
-        if (self::isInt($var)) {
-            return (int) $var;
-        }
 
         if (self::isBool($var)) {
             return 'true' === $var;
@@ -52,31 +56,25 @@ class Realtype
     }
 
     /**
-     * Check if var is boolean
-     *
-     * 1. Do a check if the floatval() is 0, if so it's not a double
-     * 2. Check if the intval() is the same as the floatval()
-     * 2a. If they are the same, check if there's a decimal, if so it probably ends in .0
+     * Check if var is double
      *
      * @param string $var
      * @return bool
      */
     private static function isDouble($var)
     {
-        return (bool) preg_match('/^\d*\.\d*$/', $var);
+        return (bool) preg_match('/^-?(?:\d+|\d+\.\d+|\.\d+)(?:[eE][+-]?\d+)?$/', $var);
     }
 
     /**
      * Check if var is an int
-     *
-     * Only does an extra check for 0 after cast
      *
      * @param string $var
      * @return bool
      */
     private static function isInt($var)
     {
-        return (bool) preg_match('/^\d+$/', $var);
+        return (bool) preg_match('/^-?\d+(?:[eE]\+?\d+)?$/', $var);
     }
 
     /**
