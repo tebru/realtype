@@ -31,6 +31,14 @@ class Realtype
             return 0;
         }
 
+        if (self::isBool($var)) {
+            return 'true' === $var;
+        }
+
+        if (self::isNull($var)) {
+            return null;
+        }
+
         if (self::isInt($var)) {
             // cast to float first in case we're using scientific notation
             $var = (float) $var;
@@ -40,15 +48,6 @@ class Realtype
 
         if (self::isDouble($var)) {
             return (float) $var;
-        }
-
-
-        if (self::isBool($var)) {
-            return 'true' === $var;
-        }
-
-        if (self::isNull($var)) {
-            return null;
         }
 
         // if we've gotten this far, it's a string
